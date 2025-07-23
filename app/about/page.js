@@ -10,11 +10,11 @@ function Page() {
       <div className="px-5 py-7">
         <div className="text-5xl font-bold ">About us</div>
         <div className="text-xl mt-20">
-          Welcome to AHR traders – your trusted destination for the latest
+          Welcome to AHR traders your trusted destination for the latest
           laptops, unbeatable deals, and expert advice. We are passionate about
           technology and believe that the right laptop can unlock endless
           possibilities. Whether you're a student, professional, gamer, or
-          casual user, we’re here to help you find the perfect device that fits
+          casual user, we are here to help you find the perfect device that fits
           your lifestyle and budget. At AHR traders, we offer a wide
           selection of laptops from top brands like Dell, HP, Apple, Lenovo,
           ASUS, and more. From high-performance machines to sleek and portable
