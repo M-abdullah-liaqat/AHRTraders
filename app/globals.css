@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-mmd: 52rem;
+  --breakpoint-xs: 38rem;
+  --breakpoint-xss: 29rem;
+}
+.animatePic{
+  animation-name: fade;
+  animation-duration: 0.7s;
+}
+@keyframes fade {
+  from {left: 25vw;}
+  to {left: 0px;}
+}
+.animatePic2{
+  animation-name: fade2;
+  animation-duration: 1s;
+}
+@keyframes fade2 {
+  from {opacity: 0.3;}
+  to {opacity: 1;}
+}
