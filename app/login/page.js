@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { Bounce } from "react-toastify";
-function page() {
+function Page() {
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ function page() {
   }, [session]);
   const handleSignUp = async (data) => {
     console.log(data);
-    let our = await fetch("http://localhost:3000/api/user", {
+    let our = await fetch("https://ahr-admin.vercel.app/api/user", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

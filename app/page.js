@@ -11,7 +11,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 export default function Home() {
   const { data, error, isLoading } = useSWR(
-    "http://localhost:3000/api/add",
+    "https://ahr-admin.vercel.app/api/add",
     async (url) => {
       const res = await fetch(url);
       if (!res.ok) {
@@ -153,8 +153,43 @@ export default function Home() {
           </Swiper>
         </div>
       </div>
+      <div className="2xl:w-[1532px] w-screen justify-self-center my-20">
+        <div className="lg:text-4xl text-3xl font-medium pb-10 2xl:px-0 px-2">
+          Latest Products
+        </div>
+        <div className="grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 2xl:px-[15px] lg:px-[1vw] md:px-[1.25vw] px-[2.5vw] 2xl:gap-[12px] lg:gap-[1vw] md:gap-[1.5vw] gap-[5vw]">
+          {latestPro &&
+            latestPro.map((item, index) => {
+              return (
+                <Link key={index} href={`/product/${item._id}`}>
+                  <div key={index} className="">
+                    <div>
+                      <div className="w-[100%] myName 2xl:h-[286px] lg:h-[23.5vw] md:h-[31vw] h-[44vw] relative border-[1px] border-neutral-400">
+                        <img
+                          className="w-[100%] h-[100%] object-cover"
+                          style={{ objectFit: "cover" }}
+                          src={item.images[0].url}
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div className="md:text-lg text-[16px] w-[100%]">
+                      {item.name}
+                    </div>
+                    <div className="md:text-lg text-[16px] font-bold">
+                      <span className="md:text-[16px] text-[12px] pr-2 text-neutral-600 line-through">
+                        ${item.price}
+                      </span>{" "}
+                      ${item.discountPrice}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+        </div>
+      </div>
       <div className="2xl:w-[1532px] w-screen justify-self-center py-13 space-y-12">
-        <div className="lg:text-4xl text-3xl font-bold px-5">
+        <div className="lg:text-4xl text-3xl font-medium px-5">
           Why Shop With Us?
         </div>
         <div className="grid xl:w-[1280px] lg:w-[1024px] mmd:w-[800] md:w-[700px] xs:w-[600px] xss:w-[400px] w-[220px] xl:h-[416px] lg:h-[333px] mmd:h-[260px] md:h-[228px] xs:h-[780px] xss:h-[520px] h-[1144px] justify-self-center md:grid-cols-4 xss:grid-cols-2 grid-cols-1 2xl:p-0 px-3 gap-5">
@@ -190,41 +225,6 @@ export default function Home() {
               Cash on delivery available
             </div>
           </div>
-        </div>
-      </div>
-      <div className="2xl:w-[1532px] w-screen justify-self-center my-20">
-        <div className="lg:text-4xl text-3xl font-medium pb-10 2xl:px-0 px-2">
-          Latest Products
-        </div>
-        <div className="grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 2xl:px-[15px] lg:px-[1vw] md:px-[1.25vw] px-[2.5vw] 2xl:gap-[12px] lg:gap-[1vw] md:gap-[1.5vw] gap-[5vw]">
-          {latestPro &&
-            latestPro.map((item, index) => {
-              return (
-                <Link key={index} href={`/product/${item._id}`}>
-                  <div key={index} className="">
-                    <div>
-                      <div className="w-[100%] myName 2xl:h-[286px] lg:h-[23.5vw] md:h-[31vw] h-[44vw] relative border-[1px] border-neutral-400">
-                        <img
-                          className="w-[100%] h-[100%] object-cover"
-                          style={{ objectFit: "cover" }}
-                          src={item.images[0].url}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="md:text-lg text-[16px] w-[100%]">
-                      {item.name}
-                    </div>
-                    <div className="md:text-lg text-[16px] font-bold">
-                      <span className="md:text-[16px] text-[12px] pr-2 text-neutral-600 line-through">
-                        ${item.price}
-                      </span>{" "}
-                      ${item.discountPrice}
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
         </div>
       </div>
     </div>

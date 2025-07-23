@@ -19,7 +19,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 export default function App() {
   const { data, error, isLoading } = useSWR(
-    "http://localhost:3000/api/add",
+    "https://ahr-admin.vercel.app/api/add",
     async (url) => {
       const res = await fetch(url);
       if (!res.ok) {
@@ -76,7 +76,7 @@ export default function App() {
         dummyCart[ind].quantity = dummyCart[ind].quantity + 1;
         if (session) {
           Carts.setCarts(dummyCart);
-          await fetch("http://localhost:3000/api/user", {
+          await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export default function App() {
         };
         if (session) {
           Carts.setCarts([...Carts.Carts, newData]);
-          await fetch("http://localhost:3000/api/user", {
+          await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function page() {
+function Page() {
   return (
     <div>
     <div className="min-h-screen lg:grid lg:grid-cols-2">
@@ -100,4 +100,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

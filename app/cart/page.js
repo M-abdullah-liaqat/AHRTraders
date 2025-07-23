@@ -17,7 +17,7 @@ function page() {
   const handleDelete =async (id) => {
     if (session) {
       Carts.setCarts(Carts.Carts.filter((item) => item.id !== id));
-          await fetch("http://localhost:3000/api/user", {
+          await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function page() {
       dummyCart[pind].quantity = e.target.value;
       if (session) {
         Carts.setCarts(dummyCart);
-          await fetch("http://localhost:3000/api/user", {
+          await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -159,11 +159,11 @@ function page() {
           </div>
           <div className="max-w-[400px] flex justify-between items-center border-b-[1px] border-neutral-400">
             <div>Shipping</div>
-            <div>0.00$</div>
+            <div>$0.00</div>
           </div>
           <div className="max-w-[400px] flex justify-between items-center font-bold">
             <div>Total</div>
-            <div>442$</div>
+            <div>${getTotal()}</div>
           </div>
           <div className="py-6">
             <button

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 async function getdata() {
-  let abd=await fetch("http://localhost:3000/api/add")
+  let abd=await fetch("https://ahr-admin.vercel.app/api/add")
   let mefin= await abd.json()
   return mefin
 }

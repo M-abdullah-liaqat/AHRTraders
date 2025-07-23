@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-import ConnectDB from "@/aboutData/ConnectDB";
 import CredentialsProvider from "next-auth/providers/credentials";
 import Users from "@/aboutData/Users";
 const Handler = NextAuth({
@@ -26,7 +25,7 @@ const Handler = NextAuth({
       },
       async authorize(credentials) {
         try {
-          const data = await fetch("http://localhost:3000/api/user", {
+          const data = await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -56,8 +55,7 @@ const Handler = NextAuth({
       return token;
     },
     async signIn({ user, account, profile, email, credentials }) {
-      await ConnectDB();
-      let res = await fetch("http://localhost:3000/api/user", {
+      let res = await fetch("https://ahr-admin.vercel.app/api/user", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +64,7 @@ const Handler = NextAuth({
       });
       let currentUser = await res.json();
       if (!currentUser) {
-        await fetch("http://localhost:3000/api/user", {
+        await fetch("https://ahr-admin.vercel.app/api/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -79,8 +77,7 @@ const Handler = NextAuth({
 
     async session({ session, user, token }) {
         if (session?.user) session.user.role = token.role;
-      await ConnectDB();
-      let res = await fetch("http://localhost:3000/api/user", {
+      let res = await fetch("https://ahr-admin.vercel.app/api/user", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

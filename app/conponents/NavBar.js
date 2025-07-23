@@ -19,7 +19,7 @@ function NavBar() {
   useEffect(() => {
     const DIDit = async() => {
       if (session) {
-        let dummy=await fetch("http://localhost:3000/api/user", {
+        let dummy=await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -32,7 +32,7 @@ function NavBar() {
         if (abd) {
           let newCart = [...abd, ...DBcart];
           Carts.setCarts(newCart);
-          await fetch("http://localhost:3000/api/user", {
+          await fetch("https://ahr-admin.vercel.app/api/user", {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

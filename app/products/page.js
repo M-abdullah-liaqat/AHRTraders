@@ -10,11 +10,13 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-function page() {
+
+function Page() {
+  const [FilterBrand, setFilterBrand] = useState([])
   const [showFilter, setshowFilter] = useState(false);
   // const AllData=useSelector((state) => state.counter.value)
   const { data, error, isLoading } = useSWR(
-    "http://localhost:3000/api/add",
+    "https://ahr-admin.vercel.app/api/add",
     fetcher,
     {
       refreshInterval: 300000, // Auto refresh every 5 min
@@ -22,9 +24,23 @@ function page() {
       dedupingInterval: 2000, // Avoid multiple requests in 2s
     }
   );
+  const handleBrand=(e,brand)=>{
+    if(e.target.checked){
+      setFilterBrand([...FilterBrand, brand])
+    }else{
+      setFilterBrand(FilterBrand.filter(item=>item !==brand))
+    }
+  }
+  const TheData=[]
+  if(data){
+    for (let i = data.length - 1; i >= 0; i--) {
+      TheData.push(data[i]);
+    }
+  }
+
+  let AllData= FilterBrand.length!==0 ? TheData.filter(p=> FilterBrand.includes(p.brand)) : TheData
   if (isLoading) return <div className="min-h-screen min-w-screen flex items-center justify-center">Loading...</div>;
   if (error) return <div>Error loading products</div>;
-  const AllData=data
   return(
     <div className="min-h-[90vh]">
         <div className="grid mmd:grid-cols-2 grid-cols-1 gap-3 bg-gray-100 border-[2px] rounded-[5px] border-gray-700 m-5 shadow-2xl">
@@ -114,19 +130,19 @@ function page() {
           >
             <div className="font-2xl font-medium">Brands</div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "HP")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">HP</label>
             </div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "Dell")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">Dell</label>
             </div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "Lenovo")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">Lenovo</label>
             </div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "Acer")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">Acer</label>
             </div>
           </div>
@@ -136,19 +152,19 @@ function page() {
           <div className="xs:flex flex-col gap-1 px-3 py-1 border-1 hidden border-neutral-300 w-[90%]">
             <div className="font-2xl font-medium">Brands</div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "HP")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">HP</label>
             </div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "Dell")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">Dell</label>
             </div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
-              <label htmlFor="HP">Lenovo</label>
+              <input onChange={(e)=>handleBrand(e, "Lenovo")}  className="cursor-pointer" type="checkbox" name="HP" />
+              <label  htmlFor="HP">Lenovo</label>
             </div>
             <div className="space-x-3">
-              <input className="cursor-pointer" type="checkbox" name="HP" />
+              <input onChange={(e)=>handleBrand(e, "Acer")} className="cursor-pointer" type="checkbox" name="HP" />
               <label htmlFor="HP">Acer</label>
             </div>
           </div>
@@ -187,4 +203,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
