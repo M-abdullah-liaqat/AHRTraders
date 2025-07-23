@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import { BsCartXFill } from "react-icons/bs";
 
-function page() {
+function Page() {
   const { data: session } = useSession();
   const Carts = useContext(MyContext);
   const ALLData = useSelector((state) => state.counter.value);
@@ -192,4 +192,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
