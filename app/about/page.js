@@ -13,7 +13,7 @@ function Page() {
           Welcome to AHR traders your trusted destination for the latest
           laptops, unbeatable deals, and expert advice. We are passionate about
           technology and believe that the right laptop can unlock endless
-          possibilities. Whether you're a student, professional, gamer, or
+          possibilities. Whether you are a student, professional, gamer, or
           casual user, we are here to help you find the perfect device that fits
           your lifestyle and budget. At AHR traders, we offer a wide
           selection of laptops from top brands like Dell, HP, Apple, Lenovo,
@@ -52,7 +52,7 @@ function Page() {
               <li>Friendly support before and after your purchase</li>
             </ol>
             We believe that the right laptop can empower people to learn more,
-            do more, and be more — and we're here to make that happen.
+            do more, and be more — and we are here to make that happen.
           </div>
         </div>
       </div>
