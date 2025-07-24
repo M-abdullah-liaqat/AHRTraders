@@ -162,7 +162,7 @@ function Page() {
                 Sign in
               </button>
               <div onClick={() => setAccount(true)} className="cursor-pointer">
-                Don't have an account
+                Dont have an account
               </div>
             </div>
           </form>
@@ -236,4 +236,4 @@ function Page() {
   );
 }
 
-export default page;
+export default Page;
